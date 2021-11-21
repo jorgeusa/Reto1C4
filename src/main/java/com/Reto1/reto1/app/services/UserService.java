@@ -58,4 +58,23 @@ public class UserService
         }
     }
     
+    public boolean getUserByEmail(String email)
+    {
+        return repository.getUserByEmail(email).isPresent();
+        
+    }
+    
+    public User getUserByEmailAndPassword(String email,String password)
+    {
+        Optional<User> user = repository.getUserByEmailAndPassword(email, password);
+        if(user.isPresent())
+        {
+            return user.get();
+        }
+        else
+        {
+            return new User(null,email,password,"NO DEFINIDO");
+        }
+    }
+    
 }
