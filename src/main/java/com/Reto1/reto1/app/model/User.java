@@ -15,10 +15,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author jorge
  */
-@Data //nos genera los getter and setter
-@NoArgsConstructor //nos genera constructor sin argumentos
-@AllArgsConstructor // nos genera constructor con todos argumentos
-@Document(collection = "user")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "hairproducts")
 public class User {
 
     @Id
