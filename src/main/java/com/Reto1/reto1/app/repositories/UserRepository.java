@@ -16,55 +16,55 @@ import org.springframework.stereotype.Repository;
  * @author jorge
  */
 @Repository //nos genera nuestro repositorio
-public class UserRepository 
-{
+public class UserRepository {
+
     @Autowired //inyeccion de dependencias
     private UserCrudRepository repository;
-    
-    public List<User> getAll()
-    {
+
+    public List<User> getAll() {
         return (List<User>) repository.findAll();
     }
-    
-    public Optional<User> getUserByName(String name)
-    {
+
+    public Optional<User> getUserByName(String name) {
         return repository.findByName(name);
     }
-    
-    public Optional<User> getUserByEmail(String email)
-    {
+
+    public Optional<User> getUserByEmail(String email) {
         return repository.findByEmail(email);
     }
-    
+
     /**
      *
      * @param name
      * @param email
      * @return
      */
-    public List<User> getUserByNameOrEmail(String name, String email)
-    {
+    public List<User> getUserByNameOrEmail(String name, String email) {
         return repository.findByNameOrEmail(name, email);
-        
+
     }
-    
-    public Optional<User> getUserByEmailAndPassword(String email,String password)
-    {
+
+    public Optional<User> getUserByEmailAndPassword(String email, String password) {
         return repository.findByEmailAndPassword(email, password);
-        
+
     }
-    public Optional<User> getUserById(Integer id)
-    {
+
+    public Optional<User> getUserById(Integer id) {
         return repository.findById(id);
     }
-    
-    public User save(User user)
-    {
+
+    public User save(User user) {
         return repository.save(user);
+    }
+
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
+
+    public List<User> getUserByIdOrEmailOrName(Integer id, String email, String name) {
+        return repository.findByIdOrEmailOrName(id, email, name);
     }
     
     
-    
-    
-    
+
 }

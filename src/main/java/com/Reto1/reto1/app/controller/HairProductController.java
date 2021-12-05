@@ -4,8 +4,8 @@
  */
 package com.Reto1.reto1.app.controller;
 
-import com.Reto1.reto1.app.model.User;
-import com.Reto1.reto1.app.services.UserService;
+import com.Reto1.reto1.app.model.HairProduct;
+import com.Reto1.reto1.app.services.HairProductService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,51 +25,39 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jorge
  */
 @RestController
-@RequestMapping("user")
-@CrossOrigin(origins="*") //habilita acceso desde cualquier origen
+@RequestMapping("hairproducts")
+@CrossOrigin(origins="*")
 
-public class UserController 
+public class HairProductController 
 {
     @Autowired
-    private UserService service;
+    private HairProductService service;
     
     @GetMapping("/all")
-    public List<User> getUsers()
+    public List<HairProduct> getHairProduct()
     {
         return service.getAll();
     }
     
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public User save(@RequestBody User user)
+    public HairProduct save(@RequestBody HairProduct hairproduct)
     {
-        return service.save(user);
+        return service.save(hairproduct);
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public User update(@RequestBody User user)
+    public HairProduct update(@RequestBody HairProduct hairproduct)
     {
-        return service.update(user);
+        return service.update(hairproduct);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Integer id)
+    public boolean delete(@PathVariable("reference") String reference)
     {
-        return service.delete(id);
-    }
-    
-    @GetMapping("/emailexist/{email}")
-    public boolean existEmail(@PathVariable("email") String email)
-    {
-        return service.getUserByEmail(email);
-    }
-    
-    @GetMapping("/{email}/{password}")
-    public User authUser(@PathVariable("email") String email,@PathVariable("password") String password)
-    {
-        return service.getUserByEmailAndPassword(email, password);
+        return service.delete(reference);
     }
     
     
