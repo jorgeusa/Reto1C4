@@ -28,10 +28,6 @@ public class User {
 
     private String name;
 
-    private Date birthtDay;
-
-    private String monthBirthtDay;
-
     private String address;
 
     private String cellPhone;
