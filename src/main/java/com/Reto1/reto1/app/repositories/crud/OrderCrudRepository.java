@@ -24,5 +24,13 @@ public interface OrderCrudRepository extends MongoRepository<Order, Integer>
     @Query("{status: ?0}")
     List<Order> findByStatus(final String status);
     
+    /**
+     *
+     * @param id
+     * @return
+     */
+    //@Query("'salesMan.id': ?0")
+    //Optional<Order> findById(final Integer id);
+    
     
 }

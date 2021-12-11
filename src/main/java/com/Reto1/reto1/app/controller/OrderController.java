@@ -66,5 +66,9 @@ public class OrderController
     {
         return service.getOrderByZone(country);
     }
-    
+    @GetMapping("/{id}")
+    public Optional<Order> existId(@PathVariable("id") Integer id)
+    {
+        return service.getOrderById(id);
+    }
 }

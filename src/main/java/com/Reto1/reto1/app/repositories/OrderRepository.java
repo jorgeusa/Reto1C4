@@ -26,7 +26,7 @@ public class OrderRepository
         return (List<Order>) repository.findAll();
     }
     
-     public Optional<Order> getOrderById(Integer id) {
+    public Optional<Order> getOrderById(Integer id) {
         return repository.findById(id);
     }
     
@@ -47,4 +47,5 @@ public class OrderRepository
     {
         return repository.findByStatus(status);
     }
+    
 }
