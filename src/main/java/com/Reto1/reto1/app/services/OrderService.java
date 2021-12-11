@@ -36,7 +36,7 @@ public class OrderService
             return order;
         } else {
 
-            if (order.getProducts() == null || order.getQuantities() == null || order.getRegisterDay() == null || order.getSalesMan() == null || order.getStatus() == null) {
+            if (order.getProducts() == null || order.getQuantities() == null || order.getRegisterDay() == null || order.getSalesMan() == null || order.getStatus() == null || order.getId() == null) {
                 return order;
             } else {
                 Optional<Order> orderExist = repository.getOrderById(order.getId());

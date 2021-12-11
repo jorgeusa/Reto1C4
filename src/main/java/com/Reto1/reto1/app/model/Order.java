@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "orders")
+@Document(collection = "order")
 public class Order 
 {
     public static String PENDING = "pendiente";
