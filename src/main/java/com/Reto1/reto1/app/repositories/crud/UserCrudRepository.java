@@ -46,4 +46,6 @@ public interface UserCrudRepository  extends MongoRepository<User,Integer>
      * @return 
      */
     public List<User> findByIdOrEmailOrName(Integer id, String email, String name);
+    //usuario con Id maximo
+    Optional<User> findTopByOrderByIdDesc();
 }

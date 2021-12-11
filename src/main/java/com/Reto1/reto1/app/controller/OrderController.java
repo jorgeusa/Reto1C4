@@ -4,8 +4,8 @@
  */
 package com.Reto1.reto1.app.controller;
 
-import com.Reto1.reto1.app.model.User;
-import com.Reto1.reto1.app.services.UserService;
+import com.Reto1.reto1.app.model.Order;
+import com.Reto1.reto1.app.services.OrderService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,33 +25,33 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author jorge
  */
-@RestController
-@RequestMapping("user")
-@CrossOrigin(origins="*") //habilita acceso desde cualquier origen
 
-public class UserController 
+@RestController
+@RequestMapping("order")
+@CrossOrigin(origins="*") //habilita acceso desde cualquier origen
+public class OrderController 
 {
     @Autowired
-    private UserService service;
+    private OrderService service;
     
     @GetMapping("/all")
-    public List<User> getUsers()
+    public List<Order> getOrder()
     {
         return service.getAll();
     }
     
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public User save(@RequestBody User user)
+    public Order save(@RequestBody Order order)
     {
-        return service.save(user);
+        return service.save(order);
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public User update(@RequestBody User user)
+    public Order update(@RequestBody Order order)
     {
-        return service.update(user);
+        return service.update(order);
     }
     
     @DeleteMapping("/{id}")
@@ -61,25 +61,10 @@ public class UserController
         return service.delete(id);
     }
     
-    @GetMapping("/emailexist/{email}")
-    public boolean existEmail(@PathVariable("email") String email)
+    @GetMapping("/zona/{country}")
+    public List<Order> existZone(@PathVariable("country") String country)
     {
-        return service.getUserByEmail(email);
+        return service.getOrderByZone(country);
     }
-    
-    @GetMapping("/{email}/{password}")
-    public User authUser(@PathVariable("email") String email,@PathVariable("password") String password)
-    {
-        return service.getUserByEmailAndPassword(email, password);
-    }
-    
-    @GetMapping("/{id}")
-    public Optional<User> existUser(@PathVariable("id") Integer id)
-    {
-        return service.getUserById(id);
-    }
-    
-    
-    
     
 }

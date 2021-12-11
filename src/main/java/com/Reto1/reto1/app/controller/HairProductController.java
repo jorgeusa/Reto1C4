@@ -7,6 +7,7 @@ package com.Reto1.reto1.app.controller;
 import com.Reto1.reto1.app.model.HairProduct;
 import com.Reto1.reto1.app.services.HairProductService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -58,6 +59,11 @@ public class HairProductController
     public boolean delete(@PathVariable("reference") String reference)
     {
         return service.delete(reference);
+    }
+    @GetMapping("/{reference}")
+    public Optional<HairProduct> existEmail(@PathVariable("reference") String reference)
+    {
+        return service.getByReference(reference);
     }
     
     

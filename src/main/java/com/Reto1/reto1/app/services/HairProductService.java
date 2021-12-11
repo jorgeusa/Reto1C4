@@ -57,8 +57,8 @@ public class HairProductService {
     }*/
     
 
-   public HairProduct save(HairProduct hairproduct) {
-        if (hairproduct.getReference()== null) {
+   /*public HairProduct save(HairProduct hairproduct) {
+        if (hairproduct.getReference()== null || hairproduct.getBrand()==null){
             return hairproduct;
         } else {
             Optional<HairProduct> productExist = repository.getHairProductById(hairproduct.getReference());
@@ -66,6 +66,29 @@ public class HairProductService {
                 return repository.save(hairproduct);
             } else {
                 return hairproduct;
+            }
+
+        }
+
+    }*/
+    public HairProduct save(HairProduct hairproduct) {
+        if (hairproduct.getReference() == null) {
+            return hairproduct;
+        } else {
+
+            if (hairproduct.getBrand() == null || hairproduct.getCategory() == null || hairproduct.getDescription() == null || hairproduct.getName() == null || hairproduct.getPhotography() == null) {
+                return hairproduct;
+            } else {
+                Optional<HairProduct> productExist = repository.getHairProductByReference(hairproduct.getReference());
+                if (productExist.isEmpty()) {
+                    return repository.save(hairproduct);
+
+                }
+                else
+                {
+                    return hairproduct;
+                }
+                
             }
 
         }
