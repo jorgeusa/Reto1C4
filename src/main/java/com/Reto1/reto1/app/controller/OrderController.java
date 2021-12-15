@@ -71,4 +71,22 @@ public class OrderController
     {
         return service.getOrderById(id);
     }
+    
+    @GetMapping("/salesman/{id}")
+    public List<Order> ordersSalesManById(@PathVariable("id") Integer id)
+    {
+        return service.ordersSalesManById(id);
+    }
+    
+    @GetMapping("/state/{state}/{id}")
+    public List<Order> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") Integer id)
+    {
+        return service.ordersSalesManByState(state, id);
+    }
+    
+    @GetMapping("/date/{date}/{id}")
+    public List<Order> ordersSalesManByDate(@PathVariable("date") String datestr, @PathVariable("id") Integer id)
+    {
+        return service.ordersSalesManByDate(datestr, id);
+    }
 }

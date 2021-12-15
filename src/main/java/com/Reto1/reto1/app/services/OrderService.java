@@ -122,6 +122,21 @@ public class OrderService
         }
     }
     
+    public List<Order> ordersSalesManById(Integer id)
+    {
+        return repository.ordersSalesManById(id);
+    }
+    
+    public List<Order> ordersSalesManByState(String state, Integer id)
+    {
+        return repository.ordersSalesManByState(state, id);
+    }
+    
+    public List<Order> ordersSalesManByDate(String datestr, Integer id)
+    {
+        return repository.ordersSalesManByDate(datestr, id);
+    }
+    
     
     
 }
