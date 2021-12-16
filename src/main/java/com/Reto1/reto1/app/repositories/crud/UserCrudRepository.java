@@ -8,6 +8,7 @@ import com.Reto1.reto1.app.model.User;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 
 /**
@@ -48,4 +49,8 @@ public interface UserCrudRepository  extends MongoRepository<User,Integer>
     public List<User> findByIdOrEmailOrName(Integer id, String email, String name);
     //usuario con Id maximo
     Optional<User> findTopByOrderByIdDesc();
+    @Query("{monthBirthtDay: ?0}")
+    List<User> findMonthBirthDay(String month);
+    
+    
 }

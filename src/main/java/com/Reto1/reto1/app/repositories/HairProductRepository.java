@@ -20,7 +20,7 @@ public class HairProductRepository {
 
     @Autowired //inyeccion de dependencias
     private HairProductCrudRepository repository;
-
+    
     public List<HairProduct> getAll() {
         return (List<HairProduct>) repository.findAll();
     }
@@ -41,6 +41,16 @@ public class HairProductRepository {
     public Optional<HairProduct> getHairProductByReference(String reference)
     {
         return repository.findByReference(reference);
+    }
+    
+    public List<HairProduct> getProductbyPrice(double price)
+    {
+        return repository.findByPrice(price);
+    }
+    
+    public List<HairProduct> getProductByDescription(String description)
+    {
+        return repository.findByDescription(description);
     }
 
 }

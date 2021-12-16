@@ -66,5 +66,19 @@ public class HairProductController
         return service.getByReference(reference);
     }
     
+    @GetMapping("/price/{price}")
+    public List<HairProduct> getByPrice(@PathVariable("price") String price)
+    {
+        return service.getProductByPrice(price);
+    }
+    
+    @GetMapping("/description/{description}")
+    public List<HairProduct> getByDescription(@PathVariable("description") String description)
+    {
+        return service.getProductByDescription(description);
+    }
+    
+    
+    
     
 }

@@ -127,5 +127,10 @@ public class UserService {
         return aBoolean;
         
     }
+    
+    public List<User> getUserByMonth(String month)
+    {
+        return repository.getByMonth(month);
+    }
 
 }

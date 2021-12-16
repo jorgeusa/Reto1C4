@@ -152,15 +152,15 @@ public class HairProductService {
         
     }
 
-    /*public boolean delete(String reference) {
-        Boolean aBoolean = repository.getHairProductByReference(reference).map(product -> {
-            repository.delete(product.getReference());
-            return true;
-
-        }).orElse(false);
-
-        return aBoolean;
-
-    }*/
+    public List<HairProduct> getProductByPrice(String price)
+    {
+        double priceValue = Double.parseDouble(price);
+        return repository.getProductbyPrice(priceValue);
+    }
+    
+    public List<HairProduct> getProductByDescription(String description)
+    {
+        return repository.getProductByDescription(description);
+    }
 
 }

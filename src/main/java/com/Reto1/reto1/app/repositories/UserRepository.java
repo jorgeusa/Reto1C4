@@ -65,6 +65,11 @@ public class UserRepository {
         return repository.findByIdOrEmailOrName(id, email, name);
     }
     
+    public List<User> getByMonth(String month)
+    {
+        return repository.findMonthBirthDay(month);
+    }
+    
     
 
 }
